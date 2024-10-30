@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -24,7 +23,6 @@ public class Goal : MonoBehaviour
     {
         if (other.tag == "Ball")
         {
-            // Debug.Log("Goal");
             string playerName = Player.instance.gameObject.name;
             if (playerName == "Player1")
             {

@@ -1,8 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class football : MonoBehaviour
@@ -17,10 +13,10 @@ public class football : MonoBehaviour
     public LineRenderer lineRenderer;
     public int numberOfPoints = 100;
     public float timeInterval = 0.1f;
-    private Vector3 initialPos;
-    private Quaternion initialRotation;
     bool isMouseDown;
     Rigidbody ballRb;
+    private Vector3 initialPos;
+    private Quaternion initialRotation;
     private Vector3 tempPos;
 
     public LineRenderer dragLine;
@@ -41,7 +37,6 @@ public class football : MonoBehaviour
         if (dragAreaRenderer != null)
         {
             dragAreaRadius = dragAreaRenderer.bounds.size.z / 2f;
-            // Debug.Log(dragAreaRadius);
         }
     }
 
@@ -52,10 +47,8 @@ public class football : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = -Camera.main.transform.position.z;
             tempPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, mousePosition.z));
-            // tempPos = Camera.main.ScreenToViewportPoint(new Vector3(mousePosition.x, mousePosition.y, mousePosition.z));
             tempPos = ConstrainedArea(tempPos, dragCenter.transform.position, dragAreaRadius);
             DrawDragLine(initialPos, new Vector3(tempPos.x, initialPos.y, tempPos.y));
-            // transform.position = new Vector3(tempPos.x, initialPos.y, tempPos.y);
 
             Trajectory(initialPos, new Vector3(tempPos.x, initialPos.y, tempPos.y));
         }
@@ -65,9 +58,6 @@ public class football : MonoBehaviour
     {
         offset = position - center;
         return center + Vector3.ClampMagnitude(offset, radius);
-        //offset = position;
-        ///return  Vector3.ClampMagnitude(offset, radius);
-
     }
 
     private void OnMouseDown()

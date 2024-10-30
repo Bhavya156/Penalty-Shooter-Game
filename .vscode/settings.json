@@ -52,5 +52,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "Project8.sln"
+    "dotnet.defaultSolution": "Penalty Shooter.sln"
 }
